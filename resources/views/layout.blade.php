@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <div class "container">
-        <a href="[{ ur1('/') }]"></a>
-        <a href="[{url('categorias')}]">categorias</a>
+    <div class='container'>
+        <a href="{{ url('/') }}">Inicio</a>
+        <a href="{{url('categorias')}}">Categorias</a>
         @yield('content')
     </div>
 

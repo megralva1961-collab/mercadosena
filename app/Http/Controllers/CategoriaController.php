@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\Models\Categoria;
+use App\Models\Categoria;
+
 class CategoriaController extends Controller
 {
     /**
@@ -31,7 +32,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($reques);
+        Categoria::create($request->all());
+        return redirect('categorias');
+
     }
 
     /**
