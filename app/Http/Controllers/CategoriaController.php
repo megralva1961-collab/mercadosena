@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
-
+use illuminate\support\facades\Validator;
 class CategoriaController extends Controller
 {
     /**
@@ -32,9 +32,21 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($reques);
-        Categoria::create($request->all());
-        return redirect('categorias');
+           //dd($reques);
+            $Validator = Validator::make($request->all(),[
+                'nombre' => 'required|max:50',
+                'descripcion' => 'required|max:150',
+            ]);
+            if ($Validator->fails()) {
+                return back()->withErrors($Validator)
+                            ->withInput();
+            }
+            else{
+                
+                Categoria::create($request->all());
+                return redirect('categorias')->with('type','success')
+                                            ->with('message','Registro creado exitosamente');
+            }
 
     }
 
@@ -51,15 +63,29 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $datos = Categoria::find($id);
+        return view('categorias.edit',compact('datos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+   public function update(Request $request, Categoria $categoria)
     {
         //
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:50',
+            'descripcion' => 'required|max:200'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)
+                         ->withInput();
+        }
+        else {
+            $categoria->update($request->all());
+            return redirect('categorias')->with('type','warning')
+                                         ->with('message','Registro actualizado exitosamente.');
+        }
     }
 
     /**
