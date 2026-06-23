@@ -3,11 +3,11 @@
 @section('content')
     <h3 class= "mt-4 mb-3">editar Categoria</h3>
     <form id="form" action="{{route('categorias.update', $datos->id) }}" method="POST">
-        @csrf
+        @csrf´
+        @method('PUT')
         <div class= "row">
             <div class="col-md-4">
-                <input type="text" name="nombre" class="form-control" placeholder="Ingrese nombre" value="
-                {{ old('nombre') }}">
+                <input type="text" name="nombre" class="form-control" placeholder="Ingrese nombre" value="{{ old('nombre',$datos->nombre) }}">
                  @error('nombre')
                     <div class="error compacto col-lg-5">{{ $message}}</div>
                 @enderror
@@ -16,8 +16,7 @@
         <br>
         <div class="row">
             <div class="col-md-4">
-                <input type="text" name="nombre" class="form-control" placeholder="Nombre" value="
-                    {{ old('nombre',$datos->nombre)}}">
+                <input type="text" name="descripcion" class="form-control" placeholder="Descripcion" value="{{ old('descripcion',$datos->descripcion)}}">
                 @error('descripcion')
                     <div class="error compacto col-lg-5">{{ $message}}</div>
                 @enderror
@@ -41,7 +40,7 @@
                      required: true,
                      maxlength: 150
                     }
-                }   
+                }
             });
         </script>
 @stop()

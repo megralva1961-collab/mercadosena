@@ -42,10 +42,10 @@ class CategoriaController extends Controller
                             ->withInput();
             }
             else{
-                
+
                 Categoria::create($request->all());
                 return redirect('categorias')->with('type','success')
-                                            
+
                 ->with('message','Registro creado exitosamente');
             }
 
@@ -71,7 +71,7 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-   public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, Categoria $categoria)
     {
         //
         $validator = Validator::make($request->all(), [
@@ -97,6 +97,6 @@ class CategoriaController extends Controller
         categoria::destroy($id);
         return \redirect('categoria')->with('type','danger')
                                     ->with('message','El registro se elimino');
-    
+
     }
 }
