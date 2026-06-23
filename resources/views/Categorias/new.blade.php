@@ -2,7 +2,7 @@
 @section('title' , 'Registro Categoria')
 @section('content')
     <h3 class= "mt-4 mb-3">Registro de Categoria</h3>
-    <form action="{{ url('categoria') }}" method="POST">
+    <form action="{{ url('categorias') }}" method="POST">
         @csrf
         <div class= "row">
             <div class="col-md-4">

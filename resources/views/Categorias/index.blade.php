@@ -6,7 +6,7 @@
     <a href="{{ url('categorias/create')}}" class="btn btn-primary">Nuevo</a>
 </div>
 @if(session('type'))
-    <div class"alert alert-{{ session('type') }} alert-dismissible fade show" roles "alert">
+    <div class="alert alert-{{ session('type') }} alert-dismissible fade show" roles="alert">
         <strong>Noticia:</strong>{{ session('message') }}
         <button type="button" class="btn-close" data-bs-dismiss= "alert" aria-label="close">
         </button>
@@ -28,14 +28,14 @@
                     {{ $categoria->descripción }}
                 </td>
                 <td>
-                    <a href"{{ route('categorias.edit') }}" class="btn btn-info">
-                        <img src="{{ url('img/icons8-editar.gif') }}" with="25">
-                    </a>
+                    <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-info">
+                            <img src="{{ url('https://img.icons8.com/color/48/edit--v1.png') }}" width="25">
+                        </a>
                     <form action="{{ route('categorias.destroy',$categoria->id) }}" mathod="POST">
                         @csrf
                         @method("DELETE")
                         <button class="btn btn-danger" onclick="return confirm('¿Quiere eliminar el registro?')">
-                            <img src="{{  url('img/icons8-borrar-100.png') }}" width=25">
+                            <img src="{{  url('https://img.icons8.com/papercut/60/erase.png') }}" width="25">
                         </button>
                     </form>
                 </td>

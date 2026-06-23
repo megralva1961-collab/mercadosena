@@ -9,6 +9,6 @@ class Categoria extends Model
     //
     public $fillable = [
         'nombre',
-        'description'
+        'descripcion'
     ];
 }
